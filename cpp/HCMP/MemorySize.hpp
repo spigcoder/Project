@@ -1,8 +1,6 @@
 #pragma once
 //来计算对应size分配的空间的大小还有哈希桶的下标
-#include <iostream>
-static const size_t MAX_LIST_NUM = 208;
-static const size_t MAX_BYTE = 256*1024;
+#include "Common.hpp"
 //区间的划分
 // 整体控制在最多10%左右的内碎⽚浪费 
 // [1,128]                  8byte对⻬        freelist[0,16) 

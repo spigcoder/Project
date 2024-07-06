@@ -1,12 +1,7 @@
 /*包含一些都会用到的api*/
 #pragma once
-#include <assert.h>
-#include <iostream>
+#include "Common.hpp"
 //表示桶的最大下标
-
-static void*& NextList(void* list){
-    return *(void**)list;
-}
 
 class FreeList{
 public:
@@ -21,7 +16,7 @@ public:
         assert(_free_list);
 
         void* obj = _free_list;
-        _free_list = NextList(_free_list);
+        _free_list = NextNode(_free_list);
         return obj;
     }
 
