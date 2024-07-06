@@ -1,4 +1,5 @@
 //目的是建立一个定长内存池，然后自行来进行分配和释放
+#pragma once
 #include <iostream>
 using std::cout;
 using std::endl;
