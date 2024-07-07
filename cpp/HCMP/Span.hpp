@@ -1,15 +1,8 @@
 /*Span是Central Cache的核心，Central也是和Thread Cache一样的桶装结构，只是他所挂的是一个一个的Span
 Span中有各种各样的结构，由于有时要对空间进行合并，所以使用双向链表比单项链表更加的合理*/
 #pragma once
-#include <mutex>
 #include "Common.hpp"
 #include "MemorySize.hpp"
-
-#if __WORDSIZE == 64
-    using page_id = unsigned long long;
-#elif __WORDSIZE == 32
-    using page_id = size_t;
-#endif
 
 struct Span
 {
@@ -33,6 +26,10 @@ public:
         _head->_prev = _head;
     }
 
+    void PushFront(Span* span){
+        Insert(Begin(), span);
+    }
+
     void Insert(Span* pos, Span* new_span){
         assert(new_span);
         //prev new pos
@@ -44,6 +41,12 @@ public:
         pos->_prev = new_span;
     }
 
+    Span* PopFront(){
+        Span* front = _head->_next;
+        Erase(front);
+        return front;
+    }
+
     void Erase(Span* pos){
         assert(pos);
         assert(pos == _head);
@@ -52,8 +55,19 @@ public:
 
         next->_prev = prev;
         prev->_next = next;
+        //这里不用进行删除操作，因为只是把这个节点从Span链表中移除，而不是直接将他删掉了
+    }
 
-        delete pos;
+    Span* Begin(){
+        return _head->_next;
+    }
+
+    Span* End(){
+        return _head;
+    }
+
+    bool Empty(){
+        return _head->_next == _head;
     }
 
 private:

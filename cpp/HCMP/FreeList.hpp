@@ -12,6 +12,11 @@ public:
         _free_list = obj;
     }
 
+    void InsertRange(void* start, void* end){
+        *(void**)end = _free_list;
+        _free_list = start;
+    }
+
     void* pop(){
         assert(_free_list);
 
@@ -24,7 +29,12 @@ public:
         return _free_list == nullptr;
     }
 
+    size_t& MaxSize(){
+        return max_size;
+    }
+
 private:
     void* _free_list = nullptr;
+    size_t max_size = 1;
 };
 

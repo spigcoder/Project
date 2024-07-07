@@ -69,11 +69,26 @@ static inline size_t GetIndex(size_t size){
    }else if(size <= 256*1024){
         return _GetIndex(size-64*1024, 8*1024)+space[0]+space[1]*3;
    }
+   return -1;
 }
 
+//这里计算的是应该从central cache中获取多少个mem_num对象
+static size_t MemMoveSize(size_t mem_num){
+    int n = MAX_BYTE / mem_num;
+    if(n < 2) return 2;
+    if(n > 512) return 512;
+    return n;
+}
 
-
-
+//这里是计算的是应该从page cache中获取几页对象
+static size_t PageMoveSize(size_t mem_num){
+    size_t n = MemMoveSize(mem_num);
+    size_t size = n*mem_num;
+    //得到这个大小的内存是多少页
+    size >>= PAGE_SHIFT;
+    if(size < 1) size = 1;
+    return size;
+}
 
 
 

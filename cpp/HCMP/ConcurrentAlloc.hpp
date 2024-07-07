@@ -1,5 +1,6 @@
 #pragma once
 #include "ThreadCache.hpp"
+#include "Common.hpp"
 
 static void* ConcurrentAlloc(size_t size){
     if(tls_thread_cache == nullptr){
