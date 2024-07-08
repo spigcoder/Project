@@ -1,6 +1,20 @@
 #pragma once
 //来计算对应size分配的空间的大小还有哈希桶的下标
 #include "Common.hpp"
+
+inline static void* SysAlloc(size_t k_page){
+    #ifdef _WIN32
+    	void* ptr = VirtualAlloc(0, k_page << PAGE_SHIFT, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+    #else
+    	// linux下brk mmap等
+        void *ptr = mmap(NULL, k_page<<PAGE_SHIFT, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    #endif
+
+    	if (ptr == (void*)-1)
+            perror("can't open a address");
+    	return ptr;
+}
+
 //区间的划分
 // 整体控制在最多10%左右的内碎⽚浪费 
 // [1,128]                  8byte对⻬        freelist[0,16) 

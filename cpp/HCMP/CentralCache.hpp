@@ -11,7 +11,7 @@ public:
     static CentralCache* GetInstance(){return &_cen_cache_ins;}
     size_t FetchRangeObj(void*& start, void*& end, size_t batchNum, size_t size);
     Span* GetOpenSpan(SpanList& list, size_t size);
-
+    void ReleaseListToSpans(void* start, size_t byte_size);
 private:
     SpanList _span_list[MAX_LIST_NUM];
 private:

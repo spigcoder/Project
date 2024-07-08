@@ -23,18 +23,22 @@ Span* CentralCache::GetOpenSpan(SpanList& span_list, size_t mem_num){
     PageCache::GetInstance()->_page_mul.lock();
     //从page cache 中得到一个span
     Span* span = PageCache::GetInstance()->NewSpan(PageMoveSize(mem_num));
+    span->_is_use = true;
     PageCache::GetInstance()->_page_mul.unlock();
 
     //将则个span的地址拆分为一个一个大小为size_的free_list
-    char* start = (char*)(((page_id)span->_page_id)<<PAGE_SHIFT);
+    char* start = (char*)((span->_page_id)<<PAGE_SHIFT);
+    cout << "start add is: " << (void*)start << endl;
     size_t size = (span->_n)<<PAGE_SHIFT;
     span->_free_list = start;
     void* tail = start;
     char* end = start + size; 
     start+= mem_num;
     //开始进行切分操作
-    while(tail != end){
-        *(void**)tail = start;
+    int i = 0;
+    while(tail != end && start != end){
+        i++;
+        NextNode(tail) = start;
         start += mem_num;
         tail = NextNode(tail);
     }
@@ -66,7 +70,60 @@ size_t CentralCache::FetchRangeObj(void*& start, void*& end, size_t batch_num, s
     span->_free_list = NextNode(end);
     NextNode(end) = nullptr;
     span->_use_count += actual_num;
+    cout << span->_use_count << endl;
     _span_list[index].mul.unlock();
 
     return actual_num;
 }
+
+/*我们现在有一个链表以及上面的各个节点了，现在我们要把这个链表中的节点转移到spanlist
+的各个span的free_list上面去, 那么有一个问题，就是我们怎么知道哪个块属于哪一个span呢
+可以使用unorder_map来解决这个问题，在page cache中建立一个unordered_map来进行page_id和
+span的一个映射，只要我们知道了一个块的起始地址，就知道它是哪一个page进而知道它是哪一个
+span就可以进行操作了*/
+void CentralCache::ReleaseListToSpans(void* start, size_t size){
+    size_t index = GetIndex(size);
+    _span_list[index].mul.lock();
+    while(start){
+        //因为central cache是多线程共同使用的，所以对他进行操作时要上锁
+        //先将start的下一个位置保存起来
+        void* next = NextNode(start);
+        Span* span = PageCache::GetInstance()->MapObjectToSpan(start);
+        //找到span之后将自己头插到span的free_list节点当中
+        NextNode(start) = span->_free_list;
+        span->_free_list = start;
+        span->_use_count--;
+        //当_usecount减为0时将它还给page cache
+        if(span->_use_count == 0){
+           //这里证明这个span划分出去的所有的小的单元块都已经换回来了，那么他的_free_list
+           //是不是乱序已经不重要了，因为全都在，所以相当于拥有一块大的内存空间
+           span->_free_list = nullptr;
+           _span_list[index].Erase(span); 
+
+           //这时可以将桶锁给解开了，因为span已经不能被外界访问到了，
+           _span_list[index].mul.unlock();
+           //这里将span还给Page Cache
+           PageCache::GetInstance()->_page_mul.lock();
+           PageCache::GetInstance()->ReleaseSpanToPageCache(span);
+           PageCache::GetInstance()->_page_mul.unlock();
+           _span_list[index].mul.lock();
+        }
+        start = next; 
+    }
+    _span_list[index].mul.unlock();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

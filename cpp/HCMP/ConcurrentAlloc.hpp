@@ -6,8 +6,8 @@ static void* ConcurrentAlloc(size_t size){
     if(tls_thread_cache == nullptr){
         tls_thread_cache = new ThreadCache;
     }
-
-    return tls_thread_cache->Allocate(size);
+    void* ptr = tls_thread_cache->Allocate(size);
+    return ptr;
 }
 
 static void ConcurrentFree(void* ptr, size_t size){

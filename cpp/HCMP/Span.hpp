@@ -15,6 +15,7 @@ struct Span
     
     size_t _obj_size = 0;       //要切割的内容的大小
     size_t _use_count = 0;      //正在使用的小块内存
+    bool _is_use = false;
 };
 
 //每一个SpanList都是一个带头双向循环链表
@@ -28,6 +29,7 @@ public:
 
     void PushFront(Span* span){
         Insert(Begin(), span);
+        assert(!Empty());
     }
 
     void Insert(Span* pos, Span* new_span){
@@ -42,6 +44,7 @@ public:
     }
 
     Span* PopFront(){
+        assert(!Empty());
         Span* front = _head->_next;
         Erase(front);
         return front;
@@ -49,7 +52,8 @@ public:
 
     void Erase(Span* pos){
         assert(pos);
-        assert(pos == _head);
+        //这里应该是pos不等于_head如果等于了就有问题
+        assert(pos != _head);
         Span* next = pos->_next;
         Span* prev = pos->_prev;
 

@@ -13,7 +13,7 @@ void*  ThreadCache::FetchFromCentralCache(size_t index, size_t mem_num){
         assert(start == end);
     }else{
         //证明不知有一个对象，要把多余的对象连接到链表当中去
-        _free_list[index].InsertRange(NextNode(start), end);
+        _free_list[index].InsertRange(NextNode(start), end, actual_num-1);
     }
     return start;
 }
@@ -24,10 +24,12 @@ void* ThreadCache::Allocate(size_t size){
     size_t mem_num = GetMemNum(size);
     size_t index = GetIndex(size);
     if(!_free_list[index].empty()){
-        return _free_list[index].pop();
+        void* ptr = _free_list[index].pop();
+        return ptr; 
     }else{
         //从central cache中获取内存
-        return FetchFromCentralCache(index, mem_num);
+        void* ptr = FetchFromCentralCache(index, mem_num);
+        return ptr; 
     }
 }
 
@@ -37,4 +39,34 @@ void ThreadCache::DeAllocate(void* ptr, size_t size){
 
     size_t index = GetIndex(size);
     _free_list[index].push(ptr);
+    //如果当前链表中的元素数量大于等于最大元素数量，则可以进行合并操作
+    if(_free_list[index].Size() >= _free_list[index].MaxSize()){
+        ListTooLong(_free_list[index], size);
+    }
 }
+
+//thread cache的释放逻辑就是说当list的长度超过某一个值的时候就会进行释放
+void ThreadCache::ListTooLong(FreeList& list, size_t size){
+    //首先要将这个链表中的各个节点都从链表中移除
+    void *start = nullptr, *end = nullptr;
+    list.PopRange(start, end, list.MaxSize()); 
+    
+    //现在start手里面拿的就是list的头指针，而且已经将节点从链表中移除走了
+    CentralCache::GetInstance()->ReleaseListToSpans(start, size);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
