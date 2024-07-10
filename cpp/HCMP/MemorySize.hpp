@@ -15,6 +15,15 @@ inline static void* SysAlloc(size_t k_page){
     	return ptr;
 }
 
+inline static void SystemFree(void* ptr, size_t size) {
+#ifdef _WIN32 
+    VirtualFree(ptr, 0, MEM_RELEASE); #else
+#else
+    munmap(ptr, size);
+// sbrk unmmap等 
+#endif
+}
+
 //区间的划分
 // 整体控制在最多10%左右的内碎⽚浪费 
 // [1,128]                  8byte对⻬        freelist[0,16) 

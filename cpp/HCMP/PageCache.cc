@@ -8,7 +8,6 @@ Span* PageCache::SlicePage(size_t i, size_t k){
     Span* k_span = new Span; 
 
     k_span->_n = k;
-    cout << "n_span ptr add is: " << (void*)(n_span->_page_id<<PAGE_SHIFT) <<endl; 
     k_span->_page_id = n_span->_page_id;
     //这里要建立映射关系，对于要返回的span，每一页都要建立对应的span和page_id的关系
     for(int i = 0; i < k; ++i){
@@ -29,16 +28,29 @@ Span* PageCache::SlicePage(size_t i, size_t k){
 //的结构不一样，他是以页数来进行悬挂的，而且如果当前桶没有，他会向更大的桶进行申请，然后把更大的桶进行切分
 //将需要的大小返回，将切剩下的
 Span* PageCache::NewSpan(size_t k){
+
+    if(k > MAX_PAGES-1){
+        //直接从堆上拿
+        void* ptr = SysAlloc(k);
+        Span* k_span = new Span;
+        k_span->_page_id = (page_id)ptr>>PAGE_SHIFT;
+        k_span->_n = k;
+        return k_span;
+    }
+
     if(!_page_list[k].Empty()){
         //这里证明当前Page_List中有Page,将第一个page返回jike
-        return _page_list[k].PopFront();
+        Span* k_span = _page_list[k].PopFront();
+        //你在返回时没有将要返回的span映射到表里面
+        for(int i = 0; i < k; ++i){
+            _page_span_map[k_span->_page_id+i] = k_span;
+        }
+        return k_span;
     } 
     //走到这里证明当前桶中是没有这么大的元素的，那么我们可以找更大的元素进行切分操作
     for(int i = k+1; i < MAX_PAGES; ++i){
         if(!_page_list[i].Empty()){
-            cout << i << endl;
             Span* span = SlicePage(i, k);
-            cout << "ptr add is: " << (void*)(span->_page_id<<PAGE_SHIFT) <<endl; 
             return span;
         }
     }
@@ -46,7 +58,6 @@ Span* PageCache::NewSpan(size_t k){
     //走到这里证明整个page cache都没有空间，那么就要向系统申请一个大小为128页的空间
     Span* big_span = new Span;
     void* ptr = SysAlloc(MAX_PAGES-1);
-    cout << "ptr add is: " << ptr << endl;
     big_span->_page_id = (page_id)ptr>>PAGE_SHIFT;
     big_span->_n = MAX_PAGES-1;
 
@@ -76,6 +87,12 @@ Span* PageCache::MapObjectToSpan(void* obj){
 就会出现外碎片问题,所以我们要把相邻的span进行合并：怎么合并-> 使用page_id和每个span的大小来判断是否相邻
 以及这个span是否正在被使用*/
 void PageCache::ReleaseSpanToPageCache(Span* span){
+    if(span->_n > MAX_PAGES){
+        //直接由系统进行释放操作
+        void* ptr = (void*)((page_id)span->_page_id<<PAGE_SHIFT); 
+        size_t size = span->_n<<PAGE_SHIFT;
+        SystemFree(ptr, size);
+    }
     //向前合并
     while(true){
         page_id prev_page = span->_page_id-1;

@@ -24,11 +24,11 @@ Span* CentralCache::GetOpenSpan(SpanList& span_list, size_t mem_num){
     //从page cache 中得到一个span
     Span* span = PageCache::GetInstance()->NewSpan(PageMoveSize(mem_num));
     span->_is_use = true;
+    span->_obj_size = mem_num;
     PageCache::GetInstance()->_page_mul.unlock();
 
     //将则个span的地址拆分为一个一个大小为size_的free_list
     char* start = (char*)((span->_page_id)<<PAGE_SHIFT);
-    cout << "start add is: " << (void*)start << endl;
     size_t size = (span->_n)<<PAGE_SHIFT;
     span->_free_list = start;
     void* tail = start;
@@ -42,6 +42,8 @@ Span* CentralCache::GetOpenSpan(SpanList& span_list, size_t mem_num){
         start += mem_num;
         tail = NextNode(tail);
     }
+    //在切分的最后要将最后的指针制空
+    NextNode(tail) = nullptr;
     //将span插入到队列当中，这个过程是需要加锁的
     span_list.mul.lock();
     span_list.PushFront(span);
@@ -70,7 +72,6 @@ size_t CentralCache::FetchRangeObj(void*& start, void*& end, size_t batch_num, s
     span->_free_list = NextNode(end);
     NextNode(end) = nullptr;
     span->_use_count += actual_num;
-    cout << span->_use_count << endl;
     _span_list[index].mul.unlock();
 
     return actual_num;
