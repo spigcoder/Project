@@ -1,6 +1,5 @@
 #include <iostream>
-#include "TcpServer.hpp"
-
+#include "HttpServer.hpp"
 
 int main(int argc, char* argv[]){
     if(argc != 2){
@@ -8,6 +7,7 @@ int main(int argc, char* argv[]){
         exit(-1);
     }
     int port = atoi(argv[1]);
-    std::shared_ptr<TcpServer> server = TcpServer::GetInstance(port);
-    while(true);
+    HttpServer http_server(port);
+    http_server.Loop();
 }
+

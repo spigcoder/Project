@@ -1,14 +1,6 @@
 #pragma once
-#include <mutex>
-#include <memory>
-#include <stdio.h>
-#include <cstring>
-#include <unistd.h>
-#include <stdlib.h>
 #include "common.hpp"
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
+
 
 constexpr int BACKLOG = 10;
 
@@ -55,12 +47,16 @@ public:
         static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
         //使用锁来对单例模式进行保护
         mtx.lock();
-        if(_instance == nullptr){
+        if(nullptr == _instance){
             _instance = std::shared_ptr<TcpServer>(new TcpServer(port));
             _instance->SockInit();
         }
         mtx.unlock();
         return _instance;
+    }
+
+    int GetSocket(){
+        return _listen_socket;
     }
 
 private:
