@@ -9,6 +9,7 @@ type IConnection interface {
 	GetConnID() uint32
 	RemoteAddr() net.Addr
 	SendMsg(msgId uint32, data []byte) error
+	SendBuffMsg(mdgID uint32, data []byte) error
 }
 
 //所有conn在处理业务的函数接口，第一个参数是Socket原生连接，第二个是请求的数据，第三个是数据的长度

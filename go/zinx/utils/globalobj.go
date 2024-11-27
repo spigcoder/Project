@@ -10,21 +10,24 @@ import(
 // 一些参数可以让用户通过zinx.json进行配置
 
 type GlobalObj struct {
-	TcpServer 	ziface.IServer
-	Host		string
-	TcpPort		int
-	Name		string
-	Version		string
-
-	MaxPacketSize uint32
-	MaxConn		int
+	TcpServer 		ziface.IServer
+	Host			string
+	TcpPort			int
+	Name			string
+	Version			string
+	MaxPacketSize 	uint32
+	MaxWorkerPoolSize 	uint32
+	MaxWorkerTaskLen	uint32
+	MaxConn			int
+	ConFilePath		string
+	MaxMsgChanLen	uint32
 }
 
 var GlobalObject *GlobalObj
 
 // 读取用户的配置文件
 func (g *GlobalObj) Reload() {
-	data, err := ioutil.ReadFile("conf/zinx.json")
+	data, err := ioutil.ReadFile(g.ConFilePath)
 	if err != nil {
 		panic(err)
 	}
@@ -43,6 +46,10 @@ func init() {
 		Host: "0.0.0.0",
 		MaxConn: 12000,
 		MaxPacketSize: 4096,
+		MaxWorkerPoolSize: 10,
+		MaxWorkerTaskLen: 1024,
+		ConFilePath: "conf/zinx.json",
+		MaxMsgChanLen: 1024,
 	}
 	GlobalObject.Reload()
 }
