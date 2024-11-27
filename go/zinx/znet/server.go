@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"zinx/ziface"
+	"zinx/utils"
 )
 
 type Server struct {
@@ -12,6 +13,7 @@ type Server struct {
 	IPVersion string
 	IP        string
 	Port      int
+	msgHandler ziface.IMsgHandle
 }
 
 //这个函数是对已经到来的数据进行处理，cnt是得到的数据的长度，conn是socket连接
@@ -53,7 +55,7 @@ func (s *Server) Start() {
 				fmt.Println("Accept err", err)
 				continue
 			}
-			dealConn := NewConnection(conn, cid, CallBackToClient)
+			dealConn := NewConnection(conn, cid, s.msgHandler)
 			cid++
 			//启动当前连接处理业务
 			go dealConn.Start()
@@ -73,12 +75,20 @@ func (s *Server) Server() {
 	select {}
 }
 
+func (s *Server) AddRouter(msgId uint32, router ziface.IRouter) {
+	s.msgHandler.AddRouter(msgId, router)
+	fmt.Println("Add Router secc! ")
+}
+
 // 返回的是一个接口，server实现了IServer中的所有的方法，就实现了这个接口
-func NewServer(name string) ziface.IServer {
+func NewServer() ziface.IServer {
+	//使用全局配置文件进行server的配置
+	utils.GlobalObject.Reload()
 	return &Server{
-		Name:      name,
+		Name: utils.GlobalObject.Name,
 		IPVersion: "tcp4",
-		IP:        "0.0.0.0",
-		Port:      7777,
+		IP: utils.GlobalObject.Host,
+		Port: utils.GlobalObject.TcpPort,
+		msgHandler: NewMsgHandle(),
 	}
 }
