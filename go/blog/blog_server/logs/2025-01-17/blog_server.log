@@ -1,0 +1,4 @@
+[2025-01-17 20:19:03] [36m[info][0m main.go:16 main.main config: &{{ 8080} {blog_server logs}}
+[2025-01-17 20:19:03] [33m[warning][0m main.go:17 main.main xxx
+[2025-01-17 20:19:03] [37m[debug][0m main.go:18 main.main yyy
+[2025-01-17 20:19:03] [31m[error][0m main.go:19 main.main zzz

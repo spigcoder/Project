@@ -1,0 +1,6 @@
+system:
+  ip:
+  port: 8080
+log: 
+  app: blog_server
+  dir: logs
