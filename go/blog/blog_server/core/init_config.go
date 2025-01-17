@@ -1,15 +1,16 @@
 package core
 
 import (
-	"os"
-	"fmt"
-	"blog_server/flags"
 	"blog_server/conf"
+	"blog_server/flags"
+	"fmt"
+	"os"
+
 	"gopkg.in/yaml.v3"
 )
 
 func ReadConf() *conf.Config {
-	byteData, err := os.ReadFile(flags.FlagOptions.File)	
+	byteData, err := os.ReadFile(flags.FlagOptions.File)
 	if err != nil {
 		panic(err)
 	}

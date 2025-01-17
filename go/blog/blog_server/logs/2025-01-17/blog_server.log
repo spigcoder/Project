@@ -2,3 +2,6 @@
 [2025-01-17 20:19:03] [33m[warning][0m main.go:17 main.main xxx
 [2025-01-17 20:19:03] [37m[debug][0m main.go:18 main.main yyy
 [2025-01-17 20:19:03] [31m[error][0m main.go:19 main.main zzz
+[2025-01-17 21:17:17] [31m[fatal][0m init_db.go:19 blog_server/core.InitDB 数据库连接失败 Error 1049 (42000): Unknown database 'blog_server'
+[2025-01-17 21:18:37] [36m[info][0m init_db.go:25 blog_server/core.InitDB 数据库连接成功！
+[2025-01-17 21:19:34] [36m[info][0m init_db.go:25 blog_server/core.InitDB 数据库连接成功！

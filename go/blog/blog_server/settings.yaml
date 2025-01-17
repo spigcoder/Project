@@ -4,3 +4,23 @@ system:
 log: 
   app: blog_server
   dir: logs
+db:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: Tang20050120.
+  name: blog_server
+  debug: true
+  source: mysql
+  max_idle_conns: 10
+  max_open_conns: 100
+db1:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: Tang20050120.
+  name: blog_server
+  debug: true
+  source: mysql
+  max_idle_conns: 10
+  max_open_conns: 100

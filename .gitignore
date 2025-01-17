@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+*.idea
+tmp
+main
+local_settings.yaml
+logs/*
+uploads/*
