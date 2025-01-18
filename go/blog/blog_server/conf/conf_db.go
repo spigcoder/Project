@@ -23,3 +23,7 @@ func (db DB) DSN() string {
 		db.Name,
 	)
 }
+
+func (db DB) Empty() bool {
+	return db.Host == "" && db.Port == 0 && db.User == "" && db.Password == "" && db.Name == ""
+}
