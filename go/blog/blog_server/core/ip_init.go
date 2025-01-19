@@ -29,7 +29,7 @@ func GetIpAddr(ip string) (addr string) {
 
 	region, err := searcher.SearchByStr(ip)
 	if err != nil {
-		logrus.Warnf("错误的ip地址 %s", err)
+		logrus.Warnf("错误的ip地址 %s", ip)
 		return ""
 	}
 	_addrList := strings.Split(region, "|")
