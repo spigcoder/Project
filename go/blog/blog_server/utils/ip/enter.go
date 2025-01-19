@@ -24,20 +24,22 @@ func HasLocalIPAddr(ip string) bool {
 
 // 判断是否是内网IPv4
 func isPrivateIPv4(ip net.IP) bool {
+	//这里对于ipv4来说，只有后4位是真实的ip地址，前面都是0
+	first, second := ip[12], ip[13]
 	// 获取IP的前缀
-	if ip[0] == 10 {
+	if first == 10 {
 		// 10.0.0.0/8
 		return true
 	}
-	if ip[0] == 172 && ip[1] >= 16 && ip[1] <= 31 {
+	if first == 172 && second >= 16 && second <= 31 {
 		// 172.16.0.0/12
 		return true
 	}
-	if ip[0] == 192 && ip[1] == 168 {
+	if first == 192 && second == 168 {
 		// 192.168.0.0/16
 		return true
 	}
-	if ip[0] == 127 {
+	if first == 127 {
 		// 127.0.0.0/8 (Loopback 地址)
 		return true
 	}

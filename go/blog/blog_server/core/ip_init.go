@@ -51,5 +51,5 @@ func GetIpAddr(ip string) (addr string) {
 		return fmt.Sprintf("%s", province)
 	}
 
-	return region
+	return ""
 }

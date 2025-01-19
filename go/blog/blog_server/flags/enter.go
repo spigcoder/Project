@@ -18,8 +18,8 @@ func Parse() {
 	  flag.Parse()
 }
 
+//需要进行数据库的迁移 -- 就是新建表
 func Run() {
-	  //需要进行数据库的迁移 -- 就是新建表
 	  if FlagOptions.DB {
 	  	MigrateDB()
 	  }

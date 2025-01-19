@@ -1,2 +1,60 @@
 [2025-01-19 14:39:23] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
 [2025-01-19 14:39:29] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:46:13] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:47:03] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:47:53] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:47:53] [36m[info][0m enter.go:12 blog_server/Router.Run Server Run On 127.0.0.1:%!d(string=8080)
+[2025-01-19 15:48:45] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:48:45] [36m[info][0m enter.go:12 blog_server/Router.Run Server Run On 127.0.0.1:8080
+[2025-01-19 15:50:46] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 15:50:46] [36m[info][0m enter.go:12 blog_server/Router.Run Server Run On 127.0.0.1:8080
+[2025-01-19 16:32:39] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:40:31] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:40:34] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:40:34] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:41:31] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:41:34] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:41:34] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:42:36] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:42:39] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:42:39] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:42:39] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:42:39] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:43:09] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:43:10] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:43:10] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:43:10] [36m[info][0m enter.go:21 blog_server/utils/ip.HasLocalIPAddr 127.0.0.1
+[2025-01-19 16:43:10] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:43:10] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:43:10] [36m[info][0m enter.go:21 blog_server/utils/ip.HasLocalIPAddr 127.0.0.1
+[2025-01-19 16:43:52] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:43:54] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:43:54] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:43:54] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:43:54] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:43:54] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:43:54] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:57:36] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:57:39] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:57:39] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:57:39] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:57:39] [36m[info][0m enter.go:46 blog_server/utils/ip.isPrivateIPv4 127.0.0.1
+[2025-01-19 16:57:39] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:57:39] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:57:39] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:57:39] [36m[info][0m enter.go:46 blog_server/utils/ip.isPrivateIPv4 127.0.0.1
+[2025-01-19 16:58:22] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:58:27] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:58:27] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:58:27] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:58:27] [36m[info][0m enter.go:46 blog_server/utils/ip.isPrivateIPv4 127.0.0.1
+[2025-01-19 16:58:27] [36m[info][0m ip_init.go:26 blog_server/core.GetIpAddr 127.0.0.1
+[2025-01-19 16:58:27] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:58:27] [36m[info][0m enter.go:30 blog_server/utils/ip.isPrivateIPv4 0 0 0 0
+[2025-01-19 16:58:27] [36m[info][0m enter.go:46 blog_server/utils/ip.isPrivateIPv4 127.0.0.1
+[2025-01-19 16:59:24] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 16:59:26] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:59:26] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:59:38] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:59:38] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
+[2025-01-19 16:59:58] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！

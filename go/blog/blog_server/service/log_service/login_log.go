@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SuccessLoginLog(c *gin.Context, loginType enum.LoginType) {
+func SuccessLogin(c *gin.Context, loginType enum.LoginType) {
 	ip := c.ClientIP()
 	addr := core.GetIpAddr(ip)
 
@@ -32,7 +32,7 @@ func SuccessLoginLog(c *gin.Context, loginType enum.LoginType) {
 	})
 }
 
-func NewLoginFail(c *gin.Context, loginType enum.LoginType, msg string, username string, pwd string) {
+func FailLogin(c *gin.Context, loginType enum.LoginType, msg string, username string, pwd string) {
 	ip := c.ClientIP()
 	addr := core.GetIpAddr(ip)
 

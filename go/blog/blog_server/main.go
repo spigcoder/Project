@@ -1,6 +1,7 @@
 package main
 
 import (
+	router "blog_server/Router"
 	"blog_server/core"
 	"blog_server/flags"
 	"blog_server/global"
@@ -13,4 +14,6 @@ func main() {
 	global.DB = core.InitDB()
 	core.InitIP()
 	flags.Run()
+
+	router.Run()
 }
