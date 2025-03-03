@@ -58,3 +58,5 @@
 [2025-01-19 16:59:38] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
 [2025-01-19 16:59:38] [36m[info][0m enter.go:20 blog_server/utils/ip.HasLocalIPAddr is IPv4
 [2025-01-19 16:59:58] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 17:16:19] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-01-19 17:17:10] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！

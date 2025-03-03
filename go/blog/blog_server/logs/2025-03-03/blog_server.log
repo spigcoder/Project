@@ -1,0 +1,11 @@
+[2025-03-03 18:17:09] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:23:07] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:24:39] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:29:19] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:29:25] [31m[error][0m site_api.go:34 blog_server/api/site_api.SiteApi.SiteOperationView EOF
+[2025-03-03 18:30:48] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:30:52] [31m[error][0m site_api.go:34 blog_server/api/site_api.SiteApi.SiteOperationView EOF
+[2025-03-03 18:32:38] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:53:03] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 18:59:22] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-03 20:24:14] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
