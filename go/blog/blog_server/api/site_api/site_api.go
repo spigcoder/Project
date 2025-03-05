@@ -5,7 +5,6 @@ import (
 	logService "blog_server/service/log_service"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 )
 
 type SiteApi struct {
@@ -26,14 +25,10 @@ type SiteOperator struct {
 func (SiteApi) SiteOperationView(c *gin.Context) {
 	operLog := logService.GetLogByGin(c)
 	// 首先由中间件来进行数据的获取，这里要将请求体中的数据拿出
-	var so SiteOperator
-	err := c.ShouldBindJSON(&so)
-	if err != nil {
-		logrus.Errorf(err.Error())
-	}
+	operLog.ShowRequest()
+	operLog.ShowResponse()
 
 	c.JSON(200, gin.H{
 		"message": "pong",
 	})
-	operLog.Save()
 }

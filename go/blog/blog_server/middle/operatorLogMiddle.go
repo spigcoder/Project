@@ -2,7 +2,6 @@ package middle
 
 import (
 	logService "blog_server/service/log_service"
-	"fmt"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +19,7 @@ func (w *responseBodyWriter) Write(b []byte) (int, error) {
 func OperatorLogMiddle(c *gin.Context) {
 	//请求中间件
 	log := logService.NewOperateLog(c)
-	fmt.Println(log)
+	log.SetRequest(c)
 	//目的是后面的视图与当前使用同一个log
 	c.Set("log", log)
 
