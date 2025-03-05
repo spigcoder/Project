@@ -1,9 +1,8 @@
 package middle
 
 import (
-	"bytes"
+	logService "blog_server/service/log_service"
 	"fmt"
-	"io"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,15 +19,15 @@ func (w *responseBodyWriter) Write(b []byte) (int, error) {
 
 func OperatorLogMiddle(c *gin.Context) {
 	//请求中间件
-	byteData, err := io.ReadAll(c.Request.Body)
-	if err != nil {
-		fmt.Println("err:", err)
-	}
-	fmt.Println("byteData:", string(byteData))
-	c.Request.Body = io.NopCloser(bytes.NewReader(byteData))
-	rBW := &responseBodyWriter{ResponseWriter: c.Writer}
-	c.Writer = rBW
+	log := logService.NewOperateLog(c)
+	fmt.Println(log)
+	//目的是后面的视图与当前使用同一个log
+	c.Set("log", log)
+
+	res := &responseBodyWriter{ResponseWriter: c.Writer}
+	c.Writer = res
 	c.Next()
 	//相应中间件
-	fmt.Println(string(rBW.Body))
+	log.SetResponse(res.Body)
+	log.Save()
 }
