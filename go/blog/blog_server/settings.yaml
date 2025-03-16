@@ -1,6 +1,15 @@
 system:
   ip: 127.0.0.1
   port: 8080
+  gin_mode: debug
+redis:
+  Addr: 127.0.0.1:6379
+  Password: ""
+  DB: 0
+jwt:
+  secret: spigcoderisahandsomeguy
+  expire: 3
+  issuer: spigcoder
 log: 
   app: blog_server
   dir: logs

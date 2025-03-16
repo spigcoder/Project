@@ -6,8 +6,8 @@ import (
 
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
-  "gorm.io/plugin/dbresolver"
 	"gorm.io/gorm"
+	"gorm.io/plugin/dbresolver"
 )
 
 func InitDB() *gorm.DB {

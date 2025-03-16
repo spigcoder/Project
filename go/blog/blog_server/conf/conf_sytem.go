@@ -5,6 +5,7 @@ import "fmt"
 type System struct {
 	IP   string `yaml:"ip"`
 	PORT int `yaml:"port"`
+	GinMode string `yaml:"gin_mode"`
 }
 
 func (s *System) Addr() string {

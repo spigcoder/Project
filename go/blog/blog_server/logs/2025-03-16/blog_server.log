@@ -1,0 +1,57 @@
+[2025-03-16 10:59:21] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 11:02:45] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 11:07:38] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 11:18:57] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 11:19:29] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:41:03] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:42:50] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:43:33] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:44:20] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:47:09] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:49:28] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:49:33] [33m[warning][0m operate_log.go:162 blog_server/service/log_service.(*OperateLog).Save 保存操作日志失败: Error 1062 (23000): Duplicate entry '1' for key 'log_models.PRIMARY'
+[2025-03-16 12:53:54] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:53:57] [33m[warning][0m operate_log.go:162 blog_server/service/log_service.(*OperateLog).Save 保存操作日志失败: Error 1062 (23000): Duplicate entry '1' for key 'log_models.PRIMARY'
+[2025-03-16 12:54:21] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:54:35] [33m[warning][0m operate_log.go:162 blog_server/service/log_service.(*OperateLog).Save 保存操作日志失败: Error 1062 (23000): Duplicate entry '1' for key 'log_models.PRIMARY'
+[2025-03-16 12:56:46] [33m[warning][0m operate_log.go:162 blog_server/service/log_service.(*OperateLog).Save 保存操作日志失败: Error 1062 (23000): Duplicate entry '1' for key 'log_models.PRIMARY'
+[2025-03-16 12:57:42] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 12:57:45] [33m[warning][0m operate_log.go:162 blog_server/service/log_service.(*OperateLog).Save 保存操作日志失败: Error 1062 (23000): Duplicate entry '1' for key 'log_models.PRIMARY'
+[2025-03-16 13:00:44] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:06:05] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:07:11] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:16:33] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:19:31] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:31:04] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 13:33:16] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 14:08:28] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 14:09:16] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 14:16:01] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 14:19:02] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 14:21:39] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:29:49] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:31:36] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:35:07] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:37:02] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:37:30] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:38:13] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:40:06] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 15:47:40] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:39:16] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:39:34] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:39:50] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:41:44] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:42:05] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 16:49:53] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 20:25:49] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 20:25:50] [31m[fatal][0m redis_init.go:20 blog_server/core.InitRedis redis连接失败
+[2025-03-16 20:26:01] [36m[info][0m db_init.go:28 blog_server/core.InitDB 数据库连接成功！
+[2025-03-16 20:26:01] [36m[info][0m redis_init.go:23 blog_server/core.InitRedis redis连接成功
+[2025-03-16 21:12:28] [31m[fatal][0m redis_init.go:20 blog_server/core.InitRedis redis连接失败
+[2025-03-16 21:12:44] [36m[info][0m redis_init.go:23 blog_server/core.InitRedis redis连接成功
+[2025-03-16 21:12:44] [31m[error][0m lose_efficacy.go:45 blog_server/utils/jwt.LoseEfficacy Redis Set err: redis: can't marshal jwt.BlackList (implement encoding.BinaryMarshaler)
+[2025-03-16 21:12:44] [31m[error][0m lose_efficacy.go:55 blog_server/utils/jwt.IsBlackList Redis Get err: redis: nil
+[2025-03-16 21:13:17] [36m[info][0m redis_init.go:23 blog_server/core.InitRedis redis连接成功
+[2025-03-16 21:13:17] [31m[error][0m lose_efficacy.go:57 blog_server/utils/jwt.LoseEfficacy Redis Set err: redis: can't marshal jwt.BlackList (implement encoding.BinaryMarshaler)
+[2025-03-16 21:13:17] [31m[error][0m lose_efficacy.go:67 blog_server/utils/jwt.IsBlackList Redis Get err: redis: nil
+[2025-03-16 21:13:28] [36m[info][0m redis_init.go:23 blog_server/core.InitRedis redis连接成功

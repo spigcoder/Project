@@ -5,6 +5,7 @@ import (
 	"blog_server/enum"
 	"blog_server/global"
 	"blog_server/models"
+	"blog_server/utils/jwt"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,6 +18,11 @@ func SuccessLogin(c *gin.Context, loginType enum.LoginType) {
 	userID := uint(1)
 	//TODO: 根据userid获得username
 	userName := ""
+	claim, err := jwt.ParseTokenByGin(c)
+	if err == nil && claim != nil{
+		userID = claim.UserID
+		userName = claim.UserName
+	}
 
 	global.DB.Create(&models.LogModel{
 		LogType:     enum.LoginLogType,

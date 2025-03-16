@@ -2,18 +2,19 @@ package router
 
 import (
 	"blog_server/global"
-	"blog_server/middle"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Run() {
 	addr := global.Config.System.Addr()
+	gin.SetMode(global.Config.System.GinMode)
 	r := gin.Default()
+	r.Static("uploads", "uploads")
 
 	api := r.Group("/api")
-	api.Use(middle.OperatorLogMiddle)
 
 	SiteRouter(api)
+	LogRouter(api)
 	r.Run(addr)
 }

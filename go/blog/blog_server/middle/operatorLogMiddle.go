@@ -28,5 +28,5 @@ func OperatorLogMiddle(c *gin.Context) {
 	c.Next()
 	//相应中间件
 	log.SetResponse(res.Body)
-	log.Save()
+	//log.Save()
 }
